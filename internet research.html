@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Internet Meme Research Challenge Escape Room</title>
+  <style>
+    /* Add CSS styling here */
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Welcome to the Internet Meme Research Challenge Escape Room!</h1>
+    <div class="puzzle" id="first-puzzle">
+      <h2>Puzzle 1:</h2>
+      <p>Decode the following message: "GR8+B8=M8".</p>
+      <input type="text" id="puzzle-1-input" placeholder="Enter your answer">
+      <button onclick="checkPuzzle1()">Submit</button>
+      <p id="puzzle-1-feedback"></p>
+    </div>
+    <div class="puzzle" id="second-puzzle">
+      <h2>Puzzle 2:</h2>
+      <p>Watch the video clip and identify the famous meme.</p>
+      <video controls>
+        <source src="meme_clip.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <input type="text" id="puzzle-2-input" placeholder="Enter your answer">
+      <button onclick="checkPuzzle2()">Submit</button>
+      <p id="puzzle-2-feedback"></p>
+    </div>
+    <div class="final-challenge">
+      <h2>Final Challenge:</h2>
+      <p>Combine the answers from Puzzle 1 and Puzzle 2 to unlock the exit code.</p>
+      <input type="text" id="final-input" placeholder="Enter the exit code">
+      <button onclick="checkFinalChallenge()">Submit</button>
+      <p id="final-feedback"></p>
+    </div>
+  </div>
+
+  <script>
+    // JavaScript code for interactive elements
+    function checkPuzzle1() {
+      var answer = document.getElementById('puzzle-1-input').value.toUpperCase();
+      if (answer === "GREAT BAIT MATE") {
+        document.getElementById('puzzle-1-feedback').innerText = "Correct! Well done.";
+        document.getElementById('second-puzzle').style.display = "block"; // Show the next puzzle
+      } else {
+        document.getElementById('puzzle-1-feedback').innerText = "Incorrect. Try again.";
+      }
+    }
+
+    function checkPuzzle2() {
+      var answer = document.getElementById('puzzle-2-input').value.toUpperCase();
+      if (answer === "DANCING BABY") {
+        document.getElementById('puzzle-2-feedback').innerText = "Correct! You're on a roll.";
+        document.getElementById('final-challenge').style.display = "block"; // Show the final challenge
+      } else {
+        document.getElementById('puzzle-2-feedback').innerText = "Incorrect. Keep trying.";
+      }
+    }
+
+    function checkFinalChallenge() {
+      var answer = document.getElementById('final-input').value.toUpperCase();
+      if (answer === "GREAT DANCING BABY") {
+        document.getElementById('final-feedback').innerText = "Congratulations! You've successfully completed the internet meme research challenge and unlocked the exit code.";
+      } else {
+        document.getElementById('final-feedback').innerText = "Incorrect. Keep working on it.";
+      }
+    }
+  </script>
+</body>
+</html>
