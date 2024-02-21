@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virtual Escape Room - Geocaching Coordinates Challenge</title>
+</head>
+<body>
+    <h1>Welcome to the Virtual Escape Room!</h1>
+    <p>Explore the webpage to uncover hidden clues and solve puzzles to escape.</p>
+
+    <!-- Geocaching Coordinates -->
+    <p>Coordinates: <span id="coordinates">N 40° 42.524', W 74° 0.106'</span></p>
+
+    <!-- Instructions -->
+    <p>Use the coordinates to locate the hidden cache. Good luck!</p>
+
+    <!-- Optional: Map Display -->
+    <div id="map" style="height: 400px;"></div>
+
+    <script>
+        // Function to decode and display coordinates on a map (optional)
+        function showMap(latitude, longitude) {
+            var mapElement = document.getElementById("map");
+            var mapOptions = {
+                center: {lat: latitude, lng: longitude},
+                zoom: 15
+            };
+            var map = new google.maps.Map(mapElement, mapOptions);
+            var marker = new google.maps.Marker({
+                position: {lat: latitude, lng: longitude},
+                map: map,
+                title: "Hidden Cache"
+            });
+        }
+
+        // Decode coordinates and display on the map (optional)
+        var coordinates = document.getElementById("coordinates").innerText;
+        var regex = /N (\d+)° (\d+\.\d+)'?, W (\d+)° (\d+\.\d+)'/;
+        var match = regex.exec(coordinates);
+        if (match) {
+            var latitude = parseFloat(match[1]) + parseFloat(match[2]) / 60;
+            var longitude = -1 * (parseFloat(match[3]) + parseFloat(match[4]) / 60);
+            showMap(latitude, longitude);
+        }
+    </script>
+    <!-- Include the Google Maps API (optional) -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" async defer></script>
+</body>
+</html>
